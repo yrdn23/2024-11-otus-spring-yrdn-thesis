@@ -59,13 +59,13 @@ create table group_students (
 
 create table lessons (
     id bigserial,
+    group_id bigint references groups (id) on delete cascade,
+    teacher_id bigint references teachers (user_id) on delete cascade,
     title text,
     description text,
     start_date timestamp with time zone,
     duration int,
     deadline_date timestamp with time zone,
-    group_id bigint references groups (id) on delete cascade,
-    teacher_id bigint references teachers (user_id) on delete cascade,
     primary key (id)
 );
 

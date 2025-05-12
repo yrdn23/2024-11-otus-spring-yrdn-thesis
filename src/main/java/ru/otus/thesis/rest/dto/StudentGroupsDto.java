@@ -15,10 +15,13 @@ import java.util.List;
 @AllArgsConstructor
 @Accessors(chain = true)
 public class StudentGroupsDto {
+
     @JsonProperty("id")
     private long id;
+
     @JsonProperty("first_name")
     private String firstName;
+
     @JsonProperty("last_name")
     private String lastName;
 
@@ -30,12 +33,16 @@ public class StudentGroupsDto {
     @AllArgsConstructor
     @Accessors(chain = true)
     public static class GroupDto {
+
         @JsonProperty("id")
         private long id;
+
         @JsonProperty("name")
         private String name;
+
         @JsonProperty("course_id")
         private long courseId;
+
         @JsonProperty("course_title")
         private String courseTitle;
     }

@@ -1,14 +1,18 @@
 package ru.otus.thesis.rest;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.otus.thesis.rest.dto.ResultDto;
 import ru.otus.thesis.rest.dto.StudentGroupsDto;
+import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
+import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
 import ru.otus.thesis.service.StudentService;
 
 @Slf4j
@@ -24,6 +28,15 @@ public class StudentController {
     ) {
         return ResponseEntity.ok()
                 .body(studentService.getGroups(studentId));
+    }
+
+    // MVP: Список ДЗ с оценками и статусами
+    @PostMapping("/api/student/homeworks")
+    public ResponseEntity<StudentHomeworksResponse> getHomeworks(
+            @RequestBody @Valid StudentHomeworksRequest request
+    ) {
+        return ResponseEntity.ok()
+                .body(studentService.getHomeworks(request));
     }
 
     @PostMapping("/api/student/{id}/group/{group_id}")
