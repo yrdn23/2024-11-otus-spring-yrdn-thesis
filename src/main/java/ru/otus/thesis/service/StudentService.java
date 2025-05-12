@@ -1,12 +1,13 @@
 package ru.otus.thesis.service;
 
-import ru.otus.thesis.rest.dto.StudentGroupsDto;
+import ru.otus.thesis.rest.dto.StudentGroupRequest;
+import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
 import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
 
 public interface StudentService {
 
-    StudentGroupsDto getGroups(long studentId);
+    StudentGroupResponse getGroup(StudentGroupRequest request);
 
     StudentHomeworksResponse getHomeworks(StudentHomeworksRequest request);
 

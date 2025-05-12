@@ -28,4 +28,7 @@ public class Teacher extends User {
 
     @OneToMany(mappedBy = "teacher")
     private List<Lesson> lessons;
+
+    @OneToMany(mappedBy = "teacher")
+    private List<Message> messages;
 }

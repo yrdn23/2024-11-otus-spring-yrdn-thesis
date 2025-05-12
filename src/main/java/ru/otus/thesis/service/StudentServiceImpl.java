@@ -9,7 +9,8 @@ import ru.otus.thesis.model.Group;
 import ru.otus.thesis.model.Student;
 import ru.otus.thesis.repository.GroupRepository;
 import ru.otus.thesis.repository.StudentRepository;
-import ru.otus.thesis.rest.dto.StudentGroupsDto;
+import ru.otus.thesis.rest.dto.StudentGroupRequest;
+import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
 import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
 
@@ -28,17 +29,23 @@ public class StudentServiceImpl implements StudentService {
 
     private final GroupRepository groupRepository;
 
-    @Override
-    public StudentGroupsDto getGroups(long studentId) {
-        Student student = studentRepository.findById(studentId)
-                .orElseThrow(() -> new EntityNotFoundException(STUDENT_NOT_FOUND.formatted(studentId)));
+    private final ValidationService validationService;
 
-        List<StudentGroupsDto.GroupDto> groups = student.getGroups().stream()
-                .map(StudentGroupsDto::from)
+    @Override
+    public StudentGroupResponse getGroup(StudentGroupRequest request) {
+        Student student = studentRepository.findById(request.getStudentId())
+                .orElseThrow(() -> new EntityNotFoundException(STUDENT_NOT_FOUND.formatted(request.getStudentId())));
+        Group group = groupRepository.findById(request.getGroupId())
+                .orElseThrow(() -> new EntityNotFoundException(GROUP_NOT_FOUND.formatted(request.getGroupId())));
+
+        validationService.validateStudentInGroup(student, group);
+
+        List<StudentGroupResponse.LessonDto> lessons = group.getLessons().stream()
+                .map(StudentGroupResponse::from)
                 .toList();
 
-        return StudentGroupsDto.from(student)
-                .setGroups(groups);
+        return StudentGroupResponse.from(group)
+                .setLessons(lessons);
     }
 
     @Override
@@ -47,6 +54,8 @@ public class StudentServiceImpl implements StudentService {
                 .orElseThrow(() -> new EntityNotFoundException(STUDENT_NOT_FOUND.formatted(request.getStudentId())));
         Group group = groupRepository.findById(request.getGroupId())
                 .orElseThrow(() -> new EntityNotFoundException(GROUP_NOT_FOUND.formatted(request.getGroupId())));
+
+        validationService.validateStudentInGroup(student, group);
 
         List<StudentHomeworksResponse.HomeworkDto> homeworks = student.getHomeworks().stream()
                 .filter(homework -> homework.getLesson().getGroup().getId() == group.getId())

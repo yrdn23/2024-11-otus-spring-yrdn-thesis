@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.otus.thesis.rest.dto.ResultDto;
-import ru.otus.thesis.rest.dto.StudentGroupsDto;
+import ru.otus.thesis.rest.dto.StudentGroupRequest;
+import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
 import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
 import ru.otus.thesis.service.StudentService;
@@ -22,12 +23,13 @@ public class StudentController {
 
     private final StudentService studentService;
 
-    @PostMapping("/api/student/{id}/groups")
-    public ResponseEntity<StudentGroupsDto> getGroups(
-            @PathVariable("id") long studentId
+    // MVP: Информация о группе
+    @PostMapping("/api/student/group")
+    public ResponseEntity<StudentGroupResponse> getGroups(
+            @RequestBody @Valid StudentGroupRequest request
     ) {
         return ResponseEntity.ok()
-                .body(studentService.getGroups(studentId));
+                .body(studentService.getGroup(request));
     }
 
     // MVP: Список ДЗ с оценками и статусами

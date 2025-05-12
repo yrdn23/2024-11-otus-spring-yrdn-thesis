@@ -1,3 +1,4 @@
+drop table if exists messages;
 drop table if exists homeworks;
 drop table if exists materials;
 drop table if exists lessons;
@@ -87,5 +88,14 @@ create table homeworks (
     comment text,
     score int,
     status text,
+    primary key (id)
+);
+
+create table messages (
+    id bigserial,
+    student_id bigint references students (user_id) on delete cascade,
+    teacher_id bigint references teachers (user_id) on delete cascade,
+    text text,
+    message_time timestamp with time zone,
     primary key (id)
 );

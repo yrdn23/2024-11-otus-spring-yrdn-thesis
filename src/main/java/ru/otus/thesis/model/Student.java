@@ -27,4 +27,7 @@ public class Student extends User {
 
     @OneToMany(mappedBy = "student")
     private List<Homework> homeworks;
+
+    @OneToMany(mappedBy = "student")
+    private List<Message> messages;
 }

@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.otus.thesis.rest.dto.GroupLessonsDto;
+import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.GroupsDto;
 import ru.otus.thesis.service.GroupService;
 
@@ -24,7 +24,7 @@ public class GroupController {
     }
 
     @PostMapping("/api/groups/{id}/lessons")
-    public ResponseEntity<GroupLessonsDto> getLessons(
+    public ResponseEntity<StudentGroupResponse> getLessons(
             @PathVariable("id") long groupId
     ) {
         return ResponseEntity.ok()

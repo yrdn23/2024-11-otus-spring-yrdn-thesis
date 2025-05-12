@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.otus.thesis.repository.GroupRepository;
-import ru.otus.thesis.rest.dto.GroupLessonsDto;
+import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.GroupsDto;
 
 import java.util.List;
@@ -27,9 +27,9 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public GroupLessonsDto getLessons(long groupId) {
-        List<GroupLessonsDto.LessonDto> lessons = null;
+    public StudentGroupResponse getLessons(long groupId) {
+        List<StudentGroupResponse.LessonDto> lessons = null;
 
-        return new GroupLessonsDto();
+        return new StudentGroupResponse();
     }
 }
