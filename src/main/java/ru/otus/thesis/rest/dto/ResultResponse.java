@@ -10,9 +10,9 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class ResultDto {
+public class ResultResponse {
 
-    public static final ResultDto OK = new ResultDto(0, "OK");
+    public static final ResultResponse OK = new ResultResponse(0, "OK");
 
     @JsonProperty("code")
     private int code;

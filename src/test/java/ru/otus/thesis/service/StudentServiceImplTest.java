@@ -10,6 +10,8 @@ import ru.otus.thesis.rest.dto.StudentGroupRequest;
 import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
 import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
+import ru.otus.thesis.rest.dto.StudentMessagesRequest;
+import ru.otus.thesis.rest.dto.StudentMessagesResponse;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -133,5 +135,47 @@ class StudentServiceImplTest {
                 .map(StudentGroupResponse.LessonDto::getId)
                 .collect(Collectors.toSet())
                 .containsAll(Set.of(7L, 8L, 9L)));
+    }
+
+    @Test
+    void getMessagesStudentNotFound() {
+        StudentMessagesRequest request = new StudentMessagesRequest()
+                .setStudentId(-1000L)
+                .setTeacherId(-1000L);
+
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class,
+                () -> studentService.getMessages(request));
+
+        assertEquals("Student not found with id: -1000", exception.getMessage());
+    }
+
+    @Test
+    void getMessagesTeacherNotFound() {
+        StudentMessagesRequest request = new StudentMessagesRequest()
+                .setStudentId(2L)
+                .setTeacherId(-1000L);
+
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class,
+                () -> studentService.getMessages(request));
+
+        assertEquals("Teacher not found with id: -1000", exception.getMessage());
+    }
+
+    @Test
+    @Transactional(readOnly = true)
+    void getMessagesSuccess() {
+        StudentMessagesRequest request = new StudentMessagesRequest()
+                .setStudentId(2L)
+                .setTeacherId(5L);
+
+        StudentMessagesResponse actualResult = studentService.getMessages(request);
+
+        assertEquals(2L, actualResult.getStudentId());
+        assertEquals(5L, actualResult.getTeacherId());
+        assertEquals(4, actualResult.getMessages().size());
+        assertTrue(actualResult.getMessages().stream()
+                .map(StudentMessagesResponse.MessageDto::getId)
+                .collect(Collectors.toSet())
+                .containsAll(Set.of(1L, 3L, 5L, 7L)));
     }
 }

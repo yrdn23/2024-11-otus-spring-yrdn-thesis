@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.otus.thesis.rest.dto.ResultDto;
+import ru.otus.thesis.rest.dto.ResultResponse;
 import ru.otus.thesis.rest.dto.StudentGroupRequest;
 import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
 import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
+import ru.otus.thesis.rest.dto.StudentMessagesRequest;
+import ru.otus.thesis.rest.dto.StudentMessagesResponse;
 import ru.otus.thesis.service.StudentService;
 
 @Slf4j
@@ -41,23 +43,33 @@ public class StudentController {
                 .body(studentService.getHomeworks(request));
     }
 
+    // MVP: Возможность переписываться с преподавателем
+    @PostMapping("/api/student/messages")
+    public ResponseEntity<StudentMessagesResponse> getMessages(
+            @RequestBody @Valid StudentMessagesRequest request
+    ) {
+        return ResponseEntity.ok()
+                .body(studentService.getMessages(request));
+    }
+
+
     @PostMapping("/api/student/{id}/group/{group_id}")
-    public ResponseEntity<ResultDto> joinGroup(
+    public ResponseEntity<ResultResponse> joinGroup(
             @PathVariable("id") long studentId,
             @PathVariable("group_id") long groupId
     ) {
         studentService.joinGroup(studentId, groupId);
         return ResponseEntity.ok()
-                .body(ResultDto.OK);
+                .body(ResultResponse.OK);
     }
 
     @DeleteMapping("/api/student/{id}/group/{group_id}")
-    public ResponseEntity<ResultDto> leaveGroup(
+    public ResponseEntity<ResultResponse> leaveGroup(
             @PathVariable("id") long studentId,
             @PathVariable("group_id") long groupId
     ) {
         studentService.leaveGroup(studentId, groupId);
         return ResponseEntity.ok()
-                .body(ResultDto.OK);
+                .body(ResultResponse.OK);
     }
 }
