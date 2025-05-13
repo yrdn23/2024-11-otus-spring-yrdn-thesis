@@ -5,11 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.thesis.exceptions.EntityNotFoundException;
-import ru.otus.thesis.exceptions.InconsistentDataException;
+import ru.otus.thesis.exceptions.InconsistentRequestException;
 import ru.otus.thesis.rest.dto.StudentGroupRequest;
 import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
 import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
+import ru.otus.thesis.rest.dto.StudentMessageSendRequest;
 import ru.otus.thesis.rest.dto.StudentMessagesRequest;
 import ru.otus.thesis.rest.dto.StudentMessagesResponse;
 
@@ -57,7 +58,7 @@ class StudentServiceImplTest {
                 .setStudentId(3L)
                 .setGroupId(3L);
 
-        InconsistentDataException exception = assertThrows(InconsistentDataException.class,
+        InconsistentRequestException exception = assertThrows(InconsistentRequestException.class,
                 () -> studentService.getHomeworks(request));
 
         assertEquals("Student 3 is not in group 3", exception.getMessage());
@@ -113,7 +114,7 @@ class StudentServiceImplTest {
                 .setStudentId(3L)
                 .setGroupId(3L);
 
-        InconsistentDataException exception = assertThrows(InconsistentDataException.class,
+        InconsistentRequestException exception = assertThrows(InconsistentRequestException.class,
                 () -> studentService.getGroup(request));
 
         assertEquals("Student 3 is not in group 3", exception.getMessage());
@@ -176,6 +177,50 @@ class StudentServiceImplTest {
         assertTrue(actualResult.getMessages().stream()
                 .map(StudentMessagesResponse.MessageDto::getId)
                 .collect(Collectors.toSet())
-                .containsAll(Set.of(1L, 3L, 5L, 7L)));
+                .containsAll(Set.of(1001L, 1003L, 1005L, 1007L)));
     }
+
+    @Test
+    void sendMessageStudentNotFound() {
+        StudentMessageSendRequest request = new StudentMessageSendRequest()
+                .setStudentId(-1000L)
+                .setTeacherId(-1000L)
+                .setText("text of message");
+
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class,
+                () -> studentService.sendMessage(request));
+
+        assertEquals("Student not found with id: -1000", exception.getMessage());
+    }
+
+    @Test
+    void sendMessageTeacherNotFound() {
+        StudentMessageSendRequest request = new StudentMessageSendRequest()
+                .setStudentId(2L)
+                .setTeacherId(-1000L)
+                .setText("text of message");
+
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class,
+                () -> studentService.sendMessage(request));
+
+        assertEquals("Teacher not found with id: -1000", exception.getMessage());
+    }
+
+    @Test
+    void sendMessageSuccess() {
+        StudentMessageSendRequest request = new StudentMessageSendRequest()
+                .setStudentId(2L)
+                .setTeacherId(7L)
+                .setText("text of message");
+
+        studentService.sendMessage(request);
+
+        StudentMessagesResponse response = studentService.getMessages(
+                new StudentMessagesRequest()
+                        .setStudentId(2L)
+                        .setTeacherId(7L));
+
+        assertEquals(2, response.getMessages().size());
+    }
+
 }

@@ -14,6 +14,7 @@ import ru.otus.thesis.rest.dto.StudentGroupRequest;
 import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
 import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
+import ru.otus.thesis.rest.dto.StudentMessageSendRequest;
 import ru.otus.thesis.rest.dto.StudentMessagesRequest;
 import ru.otus.thesis.rest.dto.StudentMessagesResponse;
 import ru.otus.thesis.service.StudentService;
@@ -52,6 +53,14 @@ public class StudentController {
                 .body(studentService.getMessages(request));
     }
 
+    // MVP: Возможность переписываться с преподавателем
+    @PostMapping("/api/student/message/send")
+    public ResponseEntity<ResultResponse> sendMessage(
+            @RequestBody @Valid StudentMessageSendRequest request
+    ) {
+        return ResponseEntity.ok()
+                .body(studentService.sendMessage(request));
+    }
 
     @PostMapping("/api/student/{id}/group/{group_id}")
     public ResponseEntity<ResultResponse> joinGroup(

@@ -8,7 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.otus.thesis.exceptions.EntityNotFoundException;
-import ru.otus.thesis.exceptions.InconsistentDataException;
+import ru.otus.thesis.exceptions.InconsistentRequestException;
 import ru.otus.thesis.rest.dto.ResultResponse;
 
 import java.util.stream.Collectors;
@@ -23,8 +23,8 @@ public class GlobalExceptionHandler {
                 .body(new ResultResponse(-1, ex.getMessage()));
     }
 
-    @ExceptionHandler(InconsistentDataException.class)
-    public ResponseEntity<ResultResponse> handleInconsistentDataException(InconsistentDataException ex) {
+    @ExceptionHandler(InconsistentRequestException.class)
+    public ResponseEntity<ResultResponse> handleInconsistentDataException(InconsistentRequestException ex) {
         return ResponseEntity.badRequest()
                 .body(new ResultResponse(-2, ex.getMessage()));
     }

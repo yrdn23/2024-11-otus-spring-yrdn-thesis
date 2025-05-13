@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 
@@ -17,10 +18,11 @@ import java.time.LocalDateTime;
 @Table(name = "messages")
 @Getter
 @Setter
+@Accessors(chain = true)
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "student_id")

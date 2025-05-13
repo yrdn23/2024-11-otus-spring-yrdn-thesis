@@ -88,10 +88,10 @@ insert into homeworks (id, lesson_id, student_id, answer, submit_date, comment, 
 (36, 12, 4, 'Answer 4-12', current_timestamp, 'Comment 4-12', 1, 'ACCEPTED');
 
 insert into messages (id, student_id, teacher_id, text, message_time) values
-(1, 2, 5, 'Message 1', current_timestamp),
-(2, 2, 6, 'Message 2', current_timestamp + interval '1 minute'),
-(3, 2, 5, 'Message 3', current_timestamp + interval '2 minute'),
-(4, 2, 6, 'Message 4', current_timestamp + interval '3 minute'),
-(5, 2, 5, 'Message 5', current_timestamp + interval '4 minute'),
-(6, 2, 7, 'Message 6', current_timestamp + interval '5 minute'),
-(7, 2, 5, 'Message 7', current_timestamp + interval '6 minute');
+(1001, 2, 5, 'Message 1', current_timestamp),
+(1002, 2, 6, 'Message 2', current_timestamp + interval '1 minute'),
+(1003, 2, 5, 'Message 3', current_timestamp + interval '2 minute'),
+(1004, 2, 6, 'Message 4', current_timestamp + interval '3 minute'),
+(1005, 2, 5, 'Message 5', current_timestamp + interval '4 minute'),
+(1006, 2, 7, 'Message 6', current_timestamp + interval '5 minute'),
+(1007, 2, 5, 'Message 7', current_timestamp + interval '6 minute');

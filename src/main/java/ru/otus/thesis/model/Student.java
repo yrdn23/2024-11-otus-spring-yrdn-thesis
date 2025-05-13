@@ -1,5 +1,6 @@
 package ru.otus.thesis.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
@@ -28,6 +29,6 @@ public class Student extends User {
     @OneToMany(mappedBy = "student")
     private List<Homework> homeworks;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Message> messages;
 }
