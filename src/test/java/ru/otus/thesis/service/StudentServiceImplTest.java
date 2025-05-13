@@ -25,7 +25,7 @@ class StudentServiceImplTest {
     private StudentService studentService;
 
     @Test
-    void getHomeworksNoStudent() {
+    void getHomeworksStudentNotFound() {
         StudentHomeworksRequest request = new StudentHomeworksRequest()
                 .setStudentId(-1000L)
                 .setGroupId(-1000L);
@@ -37,7 +37,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    void getHomeworksNoGroup() {
+    void getHomeworksGroupNotFound() {
         StudentHomeworksRequest request = new StudentHomeworksRequest()
                 .setStudentId(2L)
                 .setGroupId(-1000L);
@@ -81,7 +81,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    void getGroupNoStudent() {
+    void getGroupStudentNotFound() {
         StudentGroupRequest request = new StudentGroupRequest()
                 .setStudentId(-1000L)
                 .setGroupId(-1000L);
@@ -93,7 +93,7 @@ class StudentServiceImplTest {
     }
 
     @Test
-    void getGroupNoGroup() {
+    void getGroupGroupNotFound() {
         StudentGroupRequest request = new StudentGroupRequest()
                 .setStudentId(2L)
                 .setGroupId(-1000L);
