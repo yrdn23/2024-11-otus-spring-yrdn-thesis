@@ -1,5 +1,6 @@
 package ru.otus.thesis.rest;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,7 @@ public class StudentController {
 
     private final StudentService studentService;
 
-    // MVP: Информация о группе
+    @Operation(summary = "MVP: Информация о группе")
     @PostMapping("/api/student/group")
     public ResponseEntity<StudentGroupResponse> getGroups(
             @RequestBody @Valid StudentGroupRequest request
@@ -35,7 +36,7 @@ public class StudentController {
                 .body(studentService.getGroup(request));
     }
 
-    // MVP: Список ДЗ с оценками и статусами
+    @Operation(summary = "MVP: Список ДЗ с оценками и статусами")
     @PostMapping("/api/student/homeworks")
     public ResponseEntity<StudentHomeworksResponse> getHomeworks(
             @RequestBody @Valid StudentHomeworksRequest request
@@ -44,7 +45,7 @@ public class StudentController {
                 .body(studentService.getHomeworks(request));
     }
 
-    // MVP: Возможность переписываться с преподавателем
+    @Operation(summary = "MVP: Возможность переписываться с преподавателем")
     @PostMapping("/api/student/messages")
     public ResponseEntity<StudentMessagesResponse> getMessages(
             @RequestBody @Valid StudentMessagesRequest request
@@ -53,7 +54,7 @@ public class StudentController {
                 .body(studentService.getMessages(request));
     }
 
-    // MVP: Возможность переписываться с преподавателем
+    @Operation(summary = "MVP: Возможность переписываться с преподавателем")
     @PostMapping("/api/student/message/send")
     public ResponseEntity<ResultResponse> sendMessage(
             @RequestBody @Valid StudentMessageSendRequest request

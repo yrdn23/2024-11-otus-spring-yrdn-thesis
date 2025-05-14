@@ -2,6 +2,7 @@ package ru.otus.thesis.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,32 +20,41 @@ import java.util.List;
 public class StudentGroupResponse {
 
     @JsonProperty("id")
+    @Schema(description = "Идентификатор группы")
     private long id;
 
     @JsonProperty("code")
+    @Schema(description = "Код группы")
     private String code;
 
     @JsonProperty("name")
+    @Schema(description = "Название группы")
     private String name;
 
     @JsonProperty("start_date")
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @Schema(description = "Дата начала группы")
     private LocalDate startDate;
 
     @JsonProperty("end_date")
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @Schema(description = "Дата окончания группы")
     private LocalDate endDate;
 
     @JsonProperty("course_id")
+    @Schema(description = "Идентификатор курса")
     private long courseId;
 
     @JsonProperty("course_title")
+    @Schema(description = "Название курса")
     private String courseTitle;
 
     @JsonProperty("course_description")
+    @Schema(description = "Описание курса")
     private String courseDescription;
 
     @JsonProperty("lessons")
+    @Schema(description = "Список занятий")
     private List<LessonDto> lessons;
 
     @Data
@@ -54,21 +64,27 @@ public class StudentGroupResponse {
     public static class LessonDto {
 
         @JsonProperty("id")
+        @Schema(description = "Идентификатор занятия")
         private long id;
 
         @JsonProperty("title")
+        @Schema(description = "Название занятия")
         private String title;
 
         @JsonProperty("description")
+        @Schema(description = "Описание занятия")
         private String description;
 
         @JsonProperty("teacher_id")
+        @Schema(description = "Идентификатор преподавателя")
         private long teacherId;
 
         @JsonProperty("teacher_first_name")
+        @Schema(description = "Имя преподавателя")
         private String teacherFirstName;
 
         @JsonProperty("teacher_last_name")
+        @Schema(description = "Фамилия преподавателя")
         private String teacherLastName;
     }
 

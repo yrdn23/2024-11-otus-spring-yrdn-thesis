@@ -1,5 +1,6 @@
 package ru.otus.thesis.rest;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,7 @@ public class TeacherController {
 
     private final TeacherService teacherService;
 
-    // MVP: Список ДЗ студентов с оценками и статусами
+    @Operation(summary = "MVP: Список ДЗ студентов с оценками и статусами")
     @PostMapping("/api/teacher/homeworks")
     public ResponseEntity<TeacherHomeworksResponse> getHomeworks(
             @RequestBody @Valid TeacherHomeworksRequest request
