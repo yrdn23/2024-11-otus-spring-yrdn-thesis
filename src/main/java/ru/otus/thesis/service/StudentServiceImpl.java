@@ -6,22 +6,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.thesis.exceptions.EntityNotFoundException;
 import ru.otus.thesis.model.Group;
-import ru.otus.thesis.model.Message;
 import ru.otus.thesis.model.Student;
-import ru.otus.thesis.model.Teacher;
 import ru.otus.thesis.repository.GroupRepository;
 import ru.otus.thesis.repository.StudentRepository;
-import ru.otus.thesis.repository.TeacherRepository;
-import ru.otus.thesis.rest.dto.ResultResponse;
 import ru.otus.thesis.rest.dto.StudentGroupRequest;
 import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
 import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
-import ru.otus.thesis.rest.dto.StudentMessageSendRequest;
-import ru.otus.thesis.rest.dto.StudentMessagesRequest;
-import ru.otus.thesis.rest.dto.StudentMessagesResponse;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -31,13 +23,9 @@ public class StudentServiceImpl implements StudentService {
 
     private static final String STUDENT_NOT_FOUND = "Student not found with id: %d";
 
-    private static final String TEACHER_NOT_FOUND = "Teacher not found with id: %d";
-
     private static final String GROUP_NOT_FOUND = "Group not found with id: %d";
 
     private final StudentRepository studentRepository;
-
-    private final TeacherRepository teacherRepository;
 
     private final GroupRepository groupRepository;
 
@@ -78,43 +66,6 @@ public class StudentServiceImpl implements StudentService {
 
         return StudentHomeworksResponse.from(student, group)
                 .setHomeworks(homeworks);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public StudentMessagesResponse getMessages(StudentMessagesRequest request) {
-        Student student = studentRepository.findById(request.getStudentId())
-                .orElseThrow(() -> new EntityNotFoundException(STUDENT_NOT_FOUND.formatted(request.getStudentId())));
-        Teacher teacher = teacherRepository.findById(request.getTeacherId())
-                .orElseThrow(() -> new EntityNotFoundException(TEACHER_NOT_FOUND.formatted(request.getTeacherId())));
-
-        List<StudentMessagesResponse.MessageDto> messages = student.getMessages().stream()
-                .filter(message -> message.getTeacher().getId() == teacher.getId())
-                .map(StudentMessagesResponse::from)
-                .toList();
-
-        return StudentMessagesResponse.from(student, teacher)
-                .setMessages(messages);
-
-    }
-
-    @Override
-    @Transactional
-    public ResultResponse sendMessage(StudentMessageSendRequest request) {
-        Student student = studentRepository.findById(request.getStudentId())
-                .orElseThrow(() -> new EntityNotFoundException(STUDENT_NOT_FOUND.formatted(request.getStudentId())));
-        Teacher teacher = teacherRepository.findById(request.getTeacherId())
-                .orElseThrow(() -> new EntityNotFoundException(TEACHER_NOT_FOUND.formatted(request.getTeacherId())));
-
-        Message message = new Message()
-                .setStudent(student)
-                .setTeacher(teacher)
-                .setText(request.getText())
-                .setMessageTime(LocalDateTime.now());
-
-        student.getMessages().add(message);
-
-        return ResultResponse.OK;
     }
 
     @Override

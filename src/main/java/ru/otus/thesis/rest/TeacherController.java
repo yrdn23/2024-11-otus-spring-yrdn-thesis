@@ -8,8 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import ru.otus.thesis.enums.MessageDirection;
+import ru.otus.thesis.rest.dto.MessageSendRequest;
+import ru.otus.thesis.rest.dto.ResultResponse;
 import ru.otus.thesis.rest.dto.TeacherHomeworksRequest;
 import ru.otus.thesis.rest.dto.TeacherHomeworksResponse;
+import ru.otus.thesis.service.MessageService;
 import ru.otus.thesis.service.TeacherService;
 
 @Slf4j
@@ -19,6 +23,8 @@ public class TeacherController {
 
     private final TeacherService teacherService;
 
+    private final MessageService messageService;
+
     @Operation(summary = "MVP: Список ДЗ студентов с оценками и статусами")
     @PostMapping("/api/teacher/homeworks")
     public ResponseEntity<TeacherHomeworksResponse> getHomeworks(
@@ -26,5 +32,14 @@ public class TeacherController {
     ) {
         return ResponseEntity.ok()
                 .body(teacherService.getHomeworks(request));
+    }
+
+    @Operation(summary = "MVP: Возможность переписываться со студентом")
+    @PostMapping("/api/teacher/message/send")
+    public ResponseEntity<ResultResponse> sendMessage(
+            @RequestBody @Valid MessageSendRequest request
+    ) {
+        return ResponseEntity.ok()
+                .body(messageService.sendMessage(request, MessageDirection.T2S));
     }
 }

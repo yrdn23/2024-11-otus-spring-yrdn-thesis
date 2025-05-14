@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class StudentMessagesRequest {
+public class MessagesRequest {
 
     @JsonProperty("student_id")
     @NotNull(message = "Field 'student_id' should have value")

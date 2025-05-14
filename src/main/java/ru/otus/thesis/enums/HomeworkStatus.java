@@ -8,5 +8,4 @@ public enum HomeworkStatus {
     SUBMITTED,
     NEED_REVISION,
     ACCEPTED,
-    ;
 }

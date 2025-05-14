@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.yaml.snakeyaml.emitter.ScalarAnalysis;
 import ru.otus.thesis.model.Message;
 import ru.otus.thesis.model.Student;
 import ru.otus.thesis.model.Teacher;
@@ -19,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class StudentMessagesResponse {
+public class MessagesResponse {
 
     @JsonProperty("student_id")
     @Schema(description = "Идентификатор студента")
@@ -63,14 +62,18 @@ public class StudentMessagesResponse {
         @Schema(description = "Текст сообщения")
         private String text;
 
+        @JsonProperty("message_direction")
+        @Schema(description = "Направление сообщения")
+        private String messageDirection;
+
         @JsonProperty("message_time")
         @JsonFormat(pattern = "yyyy-MM-dd hh:mm")
         @Schema(description = "Время отправки сообщения")
         private LocalDateTime messageTime;
     }
 
-    public static StudentMessagesResponse from(Student student, Teacher teacher) {
-        return new StudentMessagesResponse()
+    public static MessagesResponse from(Student student, Teacher teacher) {
+        return new MessagesResponse()
                 .setStudentId(student.getId())
                 .setStudentFirstName(student.getFirstName())
                 .setStudentSecondName(student.getLastName())
@@ -83,6 +86,7 @@ public class StudentMessagesResponse {
         return new MessageDto()
                 .setId(message.getId())
                 .setText(message.getText())
+                .setMessageDirection(message.getMessageDirection().name())
                 .setMessageTime(message.getMessageTime());
     }
 }

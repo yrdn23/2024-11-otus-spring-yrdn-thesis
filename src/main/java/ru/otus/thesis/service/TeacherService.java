@@ -6,5 +6,4 @@ import ru.otus.thesis.rest.dto.TeacherHomeworksResponse;
 public interface TeacherService {
 
     TeacherHomeworksResponse getHomeworks(TeacherHomeworksRequest request);
-
 }

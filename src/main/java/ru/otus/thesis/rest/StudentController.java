@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import ru.otus.thesis.enums.MessageDirection;
+import ru.otus.thesis.rest.dto.MessageSendRequest;
 import ru.otus.thesis.rest.dto.ResultResponse;
 import ru.otus.thesis.rest.dto.StudentGroupRequest;
 import ru.otus.thesis.rest.dto.StudentGroupResponse;
 import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
 import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
-import ru.otus.thesis.rest.dto.StudentMessageSendRequest;
-import ru.otus.thesis.rest.dto.StudentMessagesRequest;
-import ru.otus.thesis.rest.dto.StudentMessagesResponse;
+import ru.otus.thesis.service.MessageService;
 import ru.otus.thesis.service.StudentService;
 
 @Slf4j
@@ -26,6 +26,8 @@ import ru.otus.thesis.service.StudentService;
 public class StudentController {
 
     private final StudentService studentService;
+
+    private final MessageService messageService;
 
     @Operation(summary = "MVP: Информация о группе")
     @PostMapping("/api/student/group")
@@ -46,21 +48,12 @@ public class StudentController {
     }
 
     @Operation(summary = "MVP: Возможность переписываться с преподавателем")
-    @PostMapping("/api/student/messages")
-    public ResponseEntity<StudentMessagesResponse> getMessages(
-            @RequestBody @Valid StudentMessagesRequest request
-    ) {
-        return ResponseEntity.ok()
-                .body(studentService.getMessages(request));
-    }
-
-    @Operation(summary = "MVP: Возможность переписываться с преподавателем")
     @PostMapping("/api/student/message/send")
     public ResponseEntity<ResultResponse> sendMessage(
-            @RequestBody @Valid StudentMessageSendRequest request
+            @RequestBody @Valid MessageSendRequest request
     ) {
         return ResponseEntity.ok()
-                .body(studentService.sendMessage(request));
+                .body(messageService.sendMessage(request, MessageDirection.S2T));
     }
 
     @PostMapping("/api/student/{id}/group/{group_id}")

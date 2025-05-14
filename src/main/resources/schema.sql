@@ -96,6 +96,7 @@ create table messages (
     student_id bigint references students (user_id) on delete cascade,
     teacher_id bigint references teachers (user_id) on delete cascade,
     text text,
+    message_direction text,
     message_time timestamp with time zone default current_timestamp,
     primary key (id)
 );

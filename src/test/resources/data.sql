@@ -87,11 +87,11 @@ insert into homeworks (id, lesson_id, student_id, answer, submit_date, comment, 
 (35, 11, 4, 'Answer 4-11', current_timestamp, 'Comment 4-11', 1, 'NEED_REVISION'),
 (36, 12, 4, 'Answer 4-12', current_timestamp, 'Comment 4-12', 1, 'ACCEPTED');
 
-insert into messages (id, student_id, teacher_id, text, message_time) values
-(1001, 2, 5, 'Message 1', current_timestamp),
-(1002, 2, 6, 'Message 2', current_timestamp + interval '1 minute'),
-(1003, 2, 5, 'Message 3', current_timestamp + interval '2 minute'),
-(1004, 2, 6, 'Message 4', current_timestamp + interval '3 minute'),
-(1005, 2, 5, 'Message 5', current_timestamp + interval '4 minute'),
-(1006, 2, 7, 'Message 6', current_timestamp + interval '5 minute'),
-(1007, 2, 5, 'Message 7', current_timestamp + interval '6 minute');
+insert into messages (id, student_id, teacher_id, message_direction, text, message_time) values
+(1001, 2, 5, 'S2T', 'Message 1', current_timestamp),
+(1002, 2, 6, 'T2S', 'Message 2', current_timestamp + interval '1 minute'),
+(1003, 2, 5, 'S2T', 'Message 3', current_timestamp + interval '2 minute'),
+(1004, 2, 6, 'T2S', 'Message 4', current_timestamp + interval '3 minute'),
+(1005, 2, 5, 'S2T', 'Message 5', current_timestamp + interval '4 minute'),
+(1006, 2, 7, 'T2S', 'Message 6', current_timestamp + interval '5 minute'),
+(1007, 2, 5, 'S2T', 'Message 7', current_timestamp + interval '6 minute');
