@@ -67,36 +67,6 @@
 			"response": []
 		},
 		{
-			"name": "MVP: Teacher -> Homeworks",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"teacher_id\": 6,\r\n    \"group_id\": 1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/teacher/homeworks",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"teacher",
-						"homeworks"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "MVP: Messages",
 			"request": {
 				"method": "POST",
@@ -182,6 +152,67 @@
 						"teacher",
 						"message",
 						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MVP: Teacher -> Homeworks",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"teacher_id\": 6,\r\n    \"group_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/teacher/homeworks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"teacher",
+						"homeworks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MVP: Teacher -> Accept HomeWork",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"teacher_id\": 6,\r\n    \"homework_id\": 17,\r\n    \"comment\": \"OK\",\r\n    \"score\": 10,\r\n    \"status\": \"ACCEPTED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/teacher/homework/accept",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"teacher",
+						"homework",
+						"accept"
 					]
 				}
 			},

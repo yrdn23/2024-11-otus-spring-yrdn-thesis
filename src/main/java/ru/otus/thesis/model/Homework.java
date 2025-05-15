@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import ru.otus.thesis.enums.HomeworkStatus;
 
 import java.time.LocalDateTime;
@@ -20,10 +21,11 @@ import java.time.LocalDateTime;
 @Table(name = "homeworks")
 @Getter
 @Setter
+@Accessors(chain = true)
 public class Homework {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "lesson_id")
@@ -43,7 +45,7 @@ public class Homework {
     private String comment;
 
     @Column(name = "score")
-    private int score;
+    private Integer score;
 
     @Column(name = "status")
     @Enumerated(value = EnumType.STRING)
