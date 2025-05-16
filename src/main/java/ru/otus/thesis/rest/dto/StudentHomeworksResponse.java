@@ -3,10 +3,13 @@ package ru.otus.thesis.rest.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import ru.otus.thesis.enums.HomeworkStatus;
 import ru.otus.thesis.model.Group;
 import ru.otus.thesis.model.Homework;
 import ru.otus.thesis.model.Student;
@@ -64,7 +67,7 @@ public class StudentHomeworksResponse {
 
         @JsonProperty("id")
         @Schema(description = "Идентификатор домашнего задания")
-        private long id;
+        private Long id;
 
         @JsonProperty("submit_date")
         @JsonFormat(pattern = "yyyy-MM-dd")
@@ -77,15 +80,16 @@ public class StudentHomeworksResponse {
 
         @JsonProperty("score")
         @Schema(description = "Оценка")
-        private int score;
+        private Integer score;
 
         @JsonProperty("status")
+        @Enumerated(EnumType.STRING)
         @Schema(description = "Статус")
-        private String status;
+        private HomeworkStatus status;
 
         @JsonProperty("lesson_id")
         @Schema(description = "Идентификатор занятия")
-        private long lessonId;
+        private Long lessonId;
 
         @JsonProperty("lesson_title")
         @Schema(description = "Название занятия")
@@ -98,7 +102,7 @@ public class StudentHomeworksResponse {
 
         @JsonProperty("teacher_id")
         @Schema(description = "Идентификатор преподавателя, проверяющего домашнее задания")
-        private long teacherId;
+        private Long teacherId;
 
         @JsonProperty("teacher_first_name")
         @Schema(description = "Имя преподавателя, проверяющего домашнее задания")
@@ -127,7 +131,7 @@ public class StudentHomeworksResponse {
                 .setSubmitDate(homework.getSubmitDate())
                 .setComment(homework.getComment())
                 .setScore(homework.getScore())
-                .setStatus(homework.getStatus().name())
+                .setStatus(homework.getStatus())
                 .setLessonId(homework.getLesson().getId())
                 .setLessonTitle(homework.getLesson().getTitle())
                 .setLessonDeadlineDate(homework.getLesson().getDeadlineDate())

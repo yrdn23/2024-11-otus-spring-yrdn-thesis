@@ -87,6 +87,18 @@ public class TeacherHomeworksResponse {
         @Schema(description = "Статус")
         private HomeworkStatus status;
 
+        @JsonProperty("student_id")
+        @Schema(description = "Идентификатор студента")
+        private Long studentId;
+
+        @JsonProperty("student_first_name")
+        @Schema(description = "Имя студента")
+        private String studentFirstName;
+
+        @JsonProperty("student_last_name")
+        @Schema(description = "Фамилия студента")
+        private String studentLastName;
+
         @JsonProperty("lesson_id")
         @Schema(description = "Идентификатор занятия")
         private Long lessonId;
@@ -132,6 +144,9 @@ public class TeacherHomeworksResponse {
                 .setComment(homework.getComment())
                 .setScore(homework.getScore())
                 .setStatus(homework.getStatus())
+                .setStudentId(homework.getStudent().getId())
+                .setStudentFirstName(homework.getStudent().getFirstName())
+                .setStudentLastName(homework.getStudent().getLastName())
                 .setLessonId(homework.getLesson().getId())
                 .setLessonTitle(homework.getLesson().getTitle())
                 .setLessonDeadlineDate(homework.getLesson().getDeadlineDate())
