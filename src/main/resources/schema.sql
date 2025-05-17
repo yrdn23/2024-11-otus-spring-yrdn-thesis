@@ -11,6 +11,7 @@ drop table if exists users;
 
 create table users (
     id bigserial,
+    name text,
     first_name text,
     last_name text,
     email text,

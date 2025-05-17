@@ -1,11 +1,11 @@
-insert into users (id, first_name, last_name, email, password, phone, role, register_date) values
-(1, 'FirstName1', 'LastName1', 'Email1', 'Password1', 'Phone1', 'ADMIN', current_timestamp),
-(2, 'FirstName2', 'LastName2', 'Email2', 'Password2', 'Phone2', 'STUDENT', current_timestamp),
-(3, 'FirstName3', 'LastName3', 'Email3', 'Password3', 'Phone3', 'STUDENT', current_timestamp),
-(4, 'FirstName4', 'LastName4', 'Email4', 'Password4', 'Phone4', 'STUDENT', current_timestamp),
-(5, 'FirstName5', 'LastName5', 'Email5', 'Password5', 'Phone5', 'TEACHER', current_timestamp),
-(6, 'FirstName6', 'LastName6', 'Email6', 'Password6', 'Phone6', 'TEACHER', current_timestamp),
-(7, 'FirstName7', 'LastName7', 'Email7', 'Password7', 'Phone7', 'TEACHER', current_timestamp);
+insert into users (id, name, first_name, last_name, email, password, phone, role, register_date) values
+(1, 'admin', 'FirstName1', 'LastName1', 'Email1', '$2a$10$8ux1/lacql/A1VRpLqhhfOfefhc1JfuLl.F854wH8EcR3GqdwF32.', 'Phone1', 'ADMIN', current_timestamp),
+(2, 'user2', 'FirstName2', 'LastName2', 'Email2', '$2a$10$dY6X8M.tAlj0XmWd5TAQe.HO4K3zKL7tcbN1icY4g7WQk5t5W7W1C', 'Phone2', 'STUDENT', current_timestamp),
+(3, 'user3', 'FirstName3', 'LastName3', 'Email3', '$2a$10$sY5D4vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK2', 'Phone3', 'STUDENT', current_timestamp),
+(4, 'user4', 'FirstName4', 'LastName4', 'Email4', '$2a$10$mR8X7vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK3', 'Phone4', 'STUDENT', current_timestamp),
+(5, 'user5', 'FirstName5', 'LastName5', 'Email5', '$2a$10$kS9D2vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK4', 'Phone5', 'TEACHER', current_timestamp),
+(6, 'user6', 'FirstName6', 'LastName6', 'Email6', '$2a$10$pL6X1vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK5', 'Phone6', 'TEACHER', current_timestamp),
+(7, 'user7', 'FirstName7', 'LastName7', 'Email7', '$2a$10$qM5X0vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK6', 'Phone7', 'TEACHER', current_timestamp);
 
 insert into students (user_id, enrollment_date) values
 (2, current_timestamp - interval '5 days'),
