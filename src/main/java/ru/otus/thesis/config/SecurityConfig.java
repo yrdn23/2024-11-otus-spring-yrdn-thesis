@@ -20,6 +20,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/actuator", "/actuator/health", "/actuator/info").permitAll()
                         .requestMatchers(
                                 "/",
                                 "/swagger-ui.html",
