@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.otus.thesis.rest.dto.AverageDurationReportResponse;
+import ru.otus.thesis.rest.dto.StudentProgressReportResponse;
 import ru.otus.thesis.service.ReportService;
 
 @Slf4j
@@ -22,4 +23,12 @@ public class ReportController {
         return ResponseEntity.ok()
                 .body(reportService.reportAverageDuration());
     }
+
+    @Operation(summary = "MVP: Отчет - Успеваемость / Доходимость")
+    @PostMapping("/api/report/student_progress")
+    public ResponseEntity<StudentProgressReportResponse> reportStudentProgress() {
+        return ResponseEntity.ok()
+                .body(reportService.reportStudentProgress());
+    }
+
 }
