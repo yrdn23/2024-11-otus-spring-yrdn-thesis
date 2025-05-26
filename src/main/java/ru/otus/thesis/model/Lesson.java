@@ -11,6 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 @Table(name = "lessons")
 @Getter
 @Setter
+@Accessors(chain = true)
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

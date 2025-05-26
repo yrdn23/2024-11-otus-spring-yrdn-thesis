@@ -1,13 +1,13 @@
-drop table if exists messages;
-drop table if exists homeworks;
-drop table if exists materials;
-drop table if exists lessons;
-drop table if exists group_students;
-drop table if exists groups;
-drop table if exists courses;
-drop table if exists teachers;
-drop table if exists students;
-drop table if exists users;
+drop table if exists messages cascade;
+drop table if exists homeworks cascade;
+drop table if exists materials cascade;
+drop table if exists lessons cascade;
+drop table if exists group_students cascade;
+drop table if exists groups cascade;
+drop table if exists courses cascade;
+drop table if exists teachers cascade;
+drop table if exists students cascade;
+drop table if exists users cascade;
 
 create table users (
     id bigserial,
