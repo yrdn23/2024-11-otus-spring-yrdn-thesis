@@ -22,9 +22,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/actuator", "/actuator/health", "/actuator/info").permitAll()
                         .requestMatchers(
-                                "/", "/swagger-ui.html", "/swagger-ui/**",  "/v3/api-docs/**",
-                                "/swagger-resources/**", "/swagger-resources", "/webjars/**",
-                                "/configuration/ui", "/configuration/security"
+                                "/",
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/swagger-resources/**",
+                                "/swagger-resources",
+                                "/webjars/**",
+                                "/configuration/ui",
+                                "/configuration/security",
+                                "/favicon.ico"
                         ).permitAll()
                         .requestMatchers("/api/report/**").hasAnyRole("ADMIN", "TEACHER")
                         .requestMatchers("/api/teacher/**").hasAnyRole("ADMIN", "TEACHER")
