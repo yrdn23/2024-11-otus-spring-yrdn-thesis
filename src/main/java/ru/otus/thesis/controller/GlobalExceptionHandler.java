@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.otus.thesis.exceptions.EntityNotFoundException;
 import ru.otus.thesis.exceptions.InconsistentRequestException;
-import ru.otus.thesis.rest.dto.ResultResponse;
+import ru.otus.thesis.controller.dto.ResultResponse;
 
 import java.util.stream.Collectors;
 

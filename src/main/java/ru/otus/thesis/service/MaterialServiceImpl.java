@@ -3,6 +3,7 @@ package ru.otus.thesis.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.thesis.exceptions.EntityNotFoundException;
 import ru.otus.thesis.model.Lesson;
 import ru.otus.thesis.model.Material;
@@ -25,11 +26,13 @@ public class MaterialServiceImpl implements MaterialService {
     private final MaterialRepository materialRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Material> getAllMaterialsByLessonId(Long lessonId) {
         return materialRepository.findByLessonId(lessonId);
     }
 
     @Override
+    @Transactional
     public Material addMaterial(Long lessonId, Material material) {
         Lesson lesson = lessonRepository.findById(lessonId)
                 .orElseThrow(() -> new EntityNotFoundException(LESSON_NOT_FOUND.formatted(lessonId)));
@@ -38,6 +41,7 @@ public class MaterialServiceImpl implements MaterialService {
     }
 
     @Override
+    @Transactional
     public Material updateMaterial(Long lessonId, Long materialId, Material updatedMaterial) {
         Lesson lesson = lessonRepository.findById(lessonId)
                 .orElseThrow(() -> new EntityNotFoundException(LESSON_NOT_FOUND.formatted(lessonId)));
@@ -54,6 +58,7 @@ public class MaterialServiceImpl implements MaterialService {
     }
 
     @Override
+    @Transactional
     public void deleteMaterial(Long lessonId, Long materialId) {
         Lesson lesson = lessonRepository.findById(lessonId)
                 .orElseThrow(() -> new EntityNotFoundException(LESSON_NOT_FOUND.formatted(lessonId)));

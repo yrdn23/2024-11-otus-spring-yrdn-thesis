@@ -6,10 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.thesis.exceptions.EntityNotFoundException;
 import ru.otus.thesis.exceptions.InconsistentRequestException;
-import ru.otus.thesis.rest.dto.StudentGroupRequest;
-import ru.otus.thesis.rest.dto.StudentGroupResponse;
-import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
-import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
+import ru.otus.thesis.controller.dto.StudentGroupRequest;
+import ru.otus.thesis.controller.dto.StudentGroupResponse;
+import ru.otus.thesis.controller.dto.StudentHomeworksRequest;
+import ru.otus.thesis.controller.dto.StudentHomeworksResponse;
 
 import java.util.Set;
 import java.util.stream.Collectors;

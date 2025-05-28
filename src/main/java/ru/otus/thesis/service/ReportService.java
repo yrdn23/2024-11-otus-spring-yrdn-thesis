@@ -1,7 +1,7 @@
 package ru.otus.thesis.service;
 
-import ru.otus.thesis.rest.dto.AverageDurationReportResponse;
-import ru.otus.thesis.rest.dto.StudentProgressReportResponse;
+import ru.otus.thesis.controller.dto.AverageDurationReportResponse;
+import ru.otus.thesis.controller.dto.StudentProgressReportResponse;
 
 public interface ReportService {
 

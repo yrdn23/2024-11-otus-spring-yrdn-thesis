@@ -12,10 +12,10 @@ import ru.otus.thesis.model.Teacher;
 import ru.otus.thesis.repository.GroupRepository;
 import ru.otus.thesis.repository.HomeworkRepository;
 import ru.otus.thesis.repository.TeacherRepository;
-import ru.otus.thesis.rest.dto.ResultResponse;
-import ru.otus.thesis.rest.dto.TeacherHomeworkAcceptRequest;
-import ru.otus.thesis.rest.dto.TeacherHomeworksRequest;
-import ru.otus.thesis.rest.dto.TeacherHomeworksResponse;
+import ru.otus.thesis.controller.dto.ResultResponse;
+import ru.otus.thesis.controller.dto.TeacherHomeworkAcceptRequest;
+import ru.otus.thesis.controller.dto.TeacherHomeworksRequest;
+import ru.otus.thesis.controller.dto.TeacherHomeworksResponse;
 
 import java.time.LocalDateTime;
 import java.util.List;

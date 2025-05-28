@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.thesis.repository.ReportRepository;
-import ru.otus.thesis.rest.dto.AverageDurationReportResponse;
-import ru.otus.thesis.rest.dto.StudentProgressReportResponse;
+import ru.otus.thesis.controller.dto.AverageDurationReportResponse;
+import ru.otus.thesis.controller.dto.StudentProgressReportResponse;
 
 @Slf4j
 @Service

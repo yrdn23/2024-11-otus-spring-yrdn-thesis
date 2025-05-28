@@ -6,9 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.thesis.enums.MessageDirection;
 import ru.otus.thesis.exceptions.EntityNotFoundException;
-import ru.otus.thesis.rest.dto.MessageSendRequest;
-import ru.otus.thesis.rest.dto.MessagesRequest;
-import ru.otus.thesis.rest.dto.MessagesResponse;
+import ru.otus.thesis.controller.dto.MessageSendRequest;
+import ru.otus.thesis.controller.dto.MessagesRequest;
+import ru.otus.thesis.controller.dto.MessagesResponse;
 
 import java.util.Set;
 import java.util.stream.Collectors;

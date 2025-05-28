@@ -1,4 +1,4 @@
-package ru.otus.thesis.rest;
+package ru.otus.thesis.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.otus.thesis.enums.MessageDirection;
-import ru.otus.thesis.rest.dto.MessageSendRequest;
-import ru.otus.thesis.rest.dto.ResultResponse;
-import ru.otus.thesis.rest.dto.TeacherHomeworkAcceptRequest;
-import ru.otus.thesis.rest.dto.TeacherHomeworksRequest;
-import ru.otus.thesis.rest.dto.TeacherHomeworksResponse;
+import ru.otus.thesis.controller.dto.MessageSendRequest;
+import ru.otus.thesis.controller.dto.ResultResponse;
+import ru.otus.thesis.controller.dto.TeacherHomeworkAcceptRequest;
+import ru.otus.thesis.controller.dto.TeacherHomeworksRequest;
+import ru.otus.thesis.controller.dto.TeacherHomeworksResponse;
 import ru.otus.thesis.service.MessageService;
 import ru.otus.thesis.service.TeacherService;
 

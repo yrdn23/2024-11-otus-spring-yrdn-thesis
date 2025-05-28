@@ -3,8 +3,8 @@ package ru.otus.thesis.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import ru.otus.thesis.rest.dto.AverageDurationReportResponse;
-import ru.otus.thesis.rest.dto.StudentProgressReportResponse;
+import ru.otus.thesis.controller.dto.AverageDurationReportResponse;
+import ru.otus.thesis.controller.dto.StudentProgressReportResponse;
 
 import java.util.List;
 

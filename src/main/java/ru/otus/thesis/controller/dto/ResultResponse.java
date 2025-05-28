@@ -1,4 +1,4 @@
-package ru.otus.thesis.rest.dto;
+package ru.otus.thesis.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;

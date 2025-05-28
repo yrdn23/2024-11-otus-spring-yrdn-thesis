@@ -1,4 +1,4 @@
-package ru.otus.thesis.rest;
+package ru.otus.thesis.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.otus.thesis.rest.dto.StudentGroupResponse;
-import ru.otus.thesis.rest.dto.GroupsDto;
+import ru.otus.thesis.controller.dto.StudentGroupResponse;
+import ru.otus.thesis.controller.dto.GroupsDto;
 import ru.otus.thesis.service.GroupService;
 
 @Slf4j

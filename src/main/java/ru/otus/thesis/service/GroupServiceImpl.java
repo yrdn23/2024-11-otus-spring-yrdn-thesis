@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.otus.thesis.repository.GroupRepository;
-import ru.otus.thesis.rest.dto.StudentGroupResponse;
-import ru.otus.thesis.rest.dto.GroupsDto;
+import ru.otus.thesis.controller.dto.StudentGroupResponse;
+import ru.otus.thesis.controller.dto.GroupsDto;
 
 import java.util.List;
 

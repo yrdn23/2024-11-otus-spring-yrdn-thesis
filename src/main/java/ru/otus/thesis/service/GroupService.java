@@ -1,7 +1,7 @@
 package ru.otus.thesis.service;
 
-import ru.otus.thesis.rest.dto.StudentGroupResponse;
-import ru.otus.thesis.rest.dto.GroupsDto;
+import ru.otus.thesis.controller.dto.StudentGroupResponse;
+import ru.otus.thesis.controller.dto.GroupsDto;
 
 public interface GroupService {
 

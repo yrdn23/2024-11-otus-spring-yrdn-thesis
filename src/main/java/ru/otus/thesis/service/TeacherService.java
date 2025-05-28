@@ -1,9 +1,9 @@
 package ru.otus.thesis.service;
 
-import ru.otus.thesis.rest.dto.ResultResponse;
-import ru.otus.thesis.rest.dto.TeacherHomeworkAcceptRequest;
-import ru.otus.thesis.rest.dto.TeacherHomeworksRequest;
-import ru.otus.thesis.rest.dto.TeacherHomeworksResponse;
+import ru.otus.thesis.controller.dto.ResultResponse;
+import ru.otus.thesis.controller.dto.TeacherHomeworkAcceptRequest;
+import ru.otus.thesis.controller.dto.TeacherHomeworksRequest;
+import ru.otus.thesis.controller.dto.TeacherHomeworksResponse;
 
 public interface TeacherService {
 

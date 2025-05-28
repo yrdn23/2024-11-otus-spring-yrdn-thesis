@@ -1,9 +1,9 @@
 package ru.otus.thesis.service;
 
-import ru.otus.thesis.rest.dto.StudentGroupRequest;
-import ru.otus.thesis.rest.dto.StudentGroupResponse;
-import ru.otus.thesis.rest.dto.StudentHomeworksRequest;
-import ru.otus.thesis.rest.dto.StudentHomeworksResponse;
+import ru.otus.thesis.controller.dto.StudentGroupRequest;
+import ru.otus.thesis.controller.dto.StudentGroupResponse;
+import ru.otus.thesis.controller.dto.StudentHomeworksRequest;
+import ru.otus.thesis.controller.dto.StudentHomeworksResponse;
 
 public interface StudentService {
 

@@ -8,9 +8,9 @@ import ru.otus.thesis.enums.HomeworkStatus;
 import ru.otus.thesis.exceptions.EntityNotFoundException;
 import ru.otus.thesis.model.Homework;
 import ru.otus.thesis.repository.HomeworkRepository;
-import ru.otus.thesis.rest.dto.TeacherHomeworkAcceptRequest;
-import ru.otus.thesis.rest.dto.TeacherHomeworksRequest;
-import ru.otus.thesis.rest.dto.TeacherHomeworksResponse;
+import ru.otus.thesis.controller.dto.TeacherHomeworkAcceptRequest;
+import ru.otus.thesis.controller.dto.TeacherHomeworksRequest;
+import ru.otus.thesis.controller.dto.TeacherHomeworksResponse;
 
 import java.util.Set;
 import java.util.stream.Collectors;

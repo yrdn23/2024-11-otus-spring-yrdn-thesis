@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import ru.otus.thesis.config.TestSecurityConfig;
+import ru.otus.thesis.controller.MaterialController;
 import ru.otus.thesis.model.Lesson;
 import ru.otus.thesis.model.Material;
 import ru.otus.thesis.service.MaterialService;

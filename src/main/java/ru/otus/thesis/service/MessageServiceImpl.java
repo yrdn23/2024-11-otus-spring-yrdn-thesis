@@ -12,10 +12,10 @@ import ru.otus.thesis.model.Teacher;
 import ru.otus.thesis.repository.MessageRepository;
 import ru.otus.thesis.repository.StudentRepository;
 import ru.otus.thesis.repository.TeacherRepository;
-import ru.otus.thesis.rest.dto.ResultResponse;
-import ru.otus.thesis.rest.dto.MessageSendRequest;
-import ru.otus.thesis.rest.dto.MessagesRequest;
-import ru.otus.thesis.rest.dto.MessagesResponse;
+import ru.otus.thesis.controller.dto.ResultResponse;
+import ru.otus.thesis.controller.dto.MessageSendRequest;
+import ru.otus.thesis.controller.dto.MessagesRequest;
+import ru.otus.thesis.controller.dto.MessagesResponse;
 
 import java.time.LocalDateTime;
 import java.util.List;

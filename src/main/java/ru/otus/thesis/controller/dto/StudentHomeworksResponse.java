@@ -1,4 +1,4 @@
-package ru.otus.thesis.rest.dto;
+package ru.otus.thesis.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 import ru.otus.thesis.enums.HomeworkStatus;
 import ru.otus.thesis.model.Group;
 import ru.otus.thesis.model.Homework;
-import ru.otus.thesis.model.Teacher;
+import ru.otus.thesis.model.Student;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,19 +21,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class TeacherHomeworksResponse {
+public class StudentHomeworksResponse {
 
-    @JsonProperty("teacher_id")
-    @Schema(description = "Идентификатор преподавателя")
-    private long teacherId;
+    @JsonProperty("student_id")
+    @Schema(description = "Идентификатор студента")
+    private long studentId;
 
-    @JsonProperty("teacher_first_name")
-    @Schema(description = "Имя преподавателя")
-    private String teacherFirstName;
+    @JsonProperty("student_first_name")
+    @Schema(description = "Имя студента")
+    private String studentFirstName;
 
-    @JsonProperty("teacher_last_name")
-    @Schema(description = "Фамилия преподавателя")
-    private String teacherLastName;
+    @JsonProperty("student_last_name")
+    @Schema(description = "Фамилия студента")
+    private String studentLastName;
 
     @JsonProperty("group_id")
     @Schema(description = "Идентификатор группы")
@@ -87,18 +87,6 @@ public class TeacherHomeworksResponse {
         @Schema(description = "Статус")
         private HomeworkStatus status;
 
-        @JsonProperty("student_id")
-        @Schema(description = "Идентификатор студента")
-        private Long studentId;
-
-        @JsonProperty("student_first_name")
-        @Schema(description = "Имя студента")
-        private String studentFirstName;
-
-        @JsonProperty("student_last_name")
-        @Schema(description = "Фамилия студента")
-        private String studentLastName;
-
         @JsonProperty("lesson_id")
         @Schema(description = "Идентификатор занятия")
         private Long lessonId;
@@ -125,11 +113,11 @@ public class TeacherHomeworksResponse {
         private String teacherLastName;
     }
 
-    public static TeacherHomeworksResponse from(Teacher teacher, Group group) {
-        return new TeacherHomeworksResponse()
-                .setTeacherId(teacher.getId())
-                .setTeacherFirstName(teacher.getFirstName())
-                .setTeacherLastName(teacher.getLastName())
+    public static StudentHomeworksResponse from(Student student, Group group) {
+        return new StudentHomeworksResponse()
+                .setStudentId(student.getId())
+                .setStudentFirstName(student.getFirstName())
+                .setStudentLastName(student.getLastName())
                 .setGroupId(group.getId())
                 .setGroupCode(group.getCode())
                 .setGroupName(group.getName())
@@ -144,9 +132,6 @@ public class TeacherHomeworksResponse {
                 .setComment(homework.getComment())
                 .setScore(homework.getScore())
                 .setStatus(homework.getStatus())
-                .setStudentId(homework.getStudent().getId())
-                .setStudentFirstName(homework.getStudent().getFirstName())
-                .setStudentLastName(homework.getStudent().getLastName())
                 .setLessonId(homework.getLesson().getId())
                 .setLessonTitle(homework.getLesson().getTitle())
                 .setLessonDeadlineDate(homework.getLesson().getDeadlineDate())

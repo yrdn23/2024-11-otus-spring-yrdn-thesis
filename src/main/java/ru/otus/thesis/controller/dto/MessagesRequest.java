@@ -1,4 +1,4 @@
-package ru.otus.thesis.rest.dto;
+package ru.otus.thesis.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -12,15 +12,15 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class TeacherHomeworksRequest {
+public class MessagesRequest {
+
+    @JsonProperty("student_id")
+    @NotNull(message = "Field 'student_id' should have value")
+    @Schema(description = "Идентификатор студента")
+    private Long studentId;
 
     @JsonProperty("teacher_id")
     @NotNull(message = "Field 'teacher_id' should have value")
     @Schema(description = "Идентификатор преподавателя")
     private Long teacherId;
-
-    @JsonProperty("group_id")
-    @NotNull(message = "Field 'group_id' should have value")
-    @Schema(description = "Идентификатор группы")
-    private Long groupId;
 }

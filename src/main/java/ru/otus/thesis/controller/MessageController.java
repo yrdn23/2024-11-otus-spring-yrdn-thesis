@@ -1,4 +1,4 @@
-package ru.otus.thesis.rest;
+package ru.otus.thesis.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.otus.thesis.rest.dto.MessagesRequest;
-import ru.otus.thesis.rest.dto.MessagesResponse;
+import ru.otus.thesis.controller.dto.MessagesRequest;
+import ru.otus.thesis.controller.dto.MessagesResponse;
 import ru.otus.thesis.service.MessageService;
 
 @Slf4j
