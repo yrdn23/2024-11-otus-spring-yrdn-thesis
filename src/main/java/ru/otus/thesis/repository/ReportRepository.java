@@ -17,7 +17,7 @@ public class ReportRepository {
     public List<AverageDurationReportResponse.Row> reportAverageDuration() {
         String sql = """
                 select g.course_id, c.title course_title, w.lesson_id, l.title lesson_title,
-                       round(avg((extract(epoch from w.submit_date) - extract(epoch from l.start_date)) / 
+                       round(avg((extract(epoch from w.submit_date) - extract(epoch from l.start_date)) /
                                  86400.0), 4) average_duration,
                        round(avg(w.score), 4) average_score,
                        count(1) count
