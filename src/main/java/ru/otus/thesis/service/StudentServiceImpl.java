@@ -4,16 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.otus.thesis.controller.dto.StudentGroupRequest;
+import ru.otus.thesis.controller.dto.StudentGroupResponse;
+import ru.otus.thesis.controller.dto.StudentHomeworksRequest;
+import ru.otus.thesis.controller.dto.StudentHomeworksResponse;
 import ru.otus.thesis.exceptions.EntityNotFoundException;
 import ru.otus.thesis.model.Group;
 import ru.otus.thesis.model.Student;
 import ru.otus.thesis.repository.GroupRepository;
 import ru.otus.thesis.repository.StudentRepository;
-import ru.otus.thesis.controller.dto.StudentGroupRequest;
-import ru.otus.thesis.controller.dto.StudentGroupResponse;
-import ru.otus.thesis.controller.dto.StudentHomeworksRequest;
-import ru.otus.thesis.controller.dto.StudentHomeworksResponse;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -66,6 +67,12 @@ public class StudentServiceImpl implements StudentService {
 
         return StudentHomeworksResponse.from(student, group)
                 .setHomeworks(homeworks);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Long getRegisteredLastDay() {
+        return studentRepository.countByRegisterDateAfter(LocalDateTime.now().minusDays(1));
     }
 
     @Override

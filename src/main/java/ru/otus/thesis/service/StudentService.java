@@ -11,6 +11,8 @@ public interface StudentService {
 
     StudentHomeworksResponse getHomeworks(StudentHomeworksRequest request);
 
+    Long getRegisteredLastDay();
+
     void joinGroup(long studentId, long groupId);
 
     void leaveGroup(long studentId, long groupId);

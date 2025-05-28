@@ -324,6 +324,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Actuator -> Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator",
+								"info"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"event": [
@@ -381,7 +401,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"lesson_id\": 10,\r\n    \"title\": \"Material 1\",\r\n    \"description\": \"Material 1 Description\",\r\n    \"url\": \"Meterial 1 Url\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Material 1\",\r\n    \"description\": \"Material 1 Description\",\r\n    \"url\": \"Meterial 1 Url\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -412,7 +432,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"lesson_id\": 10,\r\n    \"title\": \"Material 1 v2\",\r\n    \"description\": \"Material 1 Description v2\",\r\n    \"url\": \"Meterial 1 Url v2\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Material 1 v2\",\r\n    \"description\": \"Material 1 Description v2\",\r\n    \"url\": \"Meterial 1 Url v2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -443,7 +463,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/lessons/10/materials/3",
+							"raw": "http://localhost:8080/api/lessons/10/materials/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -454,7 +474,7 @@
 								"lessons",
 								"10",
 								"materials",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -463,88 +483,93 @@
 			]
 		},
 		{
-			"name": "groups",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/groups",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"groups"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "student-join-group",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Others",
+			"item": [
+				{
+					"name": "groups",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/groups",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"groups"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/student/4/group/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"student",
-						"4",
-						"group",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "student-leave-group",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "student-join-group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/student/4/group/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"student",
+								"4",
+								"group",
+								"3"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/student/4/group/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"student",
-						"4",
-						"group",
-						"1"
-					]
+				{
+					"name": "student-leave-group",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/student/4/group/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"student",
+								"4",
+								"group",
+								"3"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"auth": {
