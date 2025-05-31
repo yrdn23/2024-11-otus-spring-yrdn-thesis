@@ -1,0 +1,88 @@
+insert into users (id, name, first_name, last_name, email, password, phone, role, register_date) values
+(1, 'admin', 'FirstName1', 'LastName1', 'Email1', '$2a$10$8ux1/lacql/A1VRpLqhhfOfefhc1JfuLl.F854wH8EcR3GqdwF32.', 'Phone1', 'ADMIN', current_timestamp),
+(2, 'user2', 'FirstName2', 'LastName2', 'Email2', '$2a$10$dY6X8M.tAlj0XmWd5TAQe.HO4K3zKL7tcbN1icY4g7WQk5t5W7W1C', 'Phone2', 'STUDENT', current_timestamp),
+(3, 'user3', 'FirstName3', 'LastName3', 'Email3', '$2a$10$sY5D4vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK2', 'Phone3', 'STUDENT', current_timestamp),
+(4, 'user4', 'FirstName4', 'LastName4', 'Email4', '$2a$10$mR8X7vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK3', 'Phone4', 'STUDENT', current_timestamp),
+(5, 'user5', 'FirstName5', 'LastName5', 'Email5', '$2a$10$kS9D2vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK4', 'Phone5', 'TEACHER', current_timestamp),
+(6, 'user6', 'FirstName6', 'LastName6', 'Email6', '$2a$10$pL6X1vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK5', 'Phone6', 'TEACHER', current_timestamp),
+(7, 'user7', 'FirstName7', 'LastName7', 'Email7', '$2a$10$qM5X0vJwXe3tRtJQ9XQZ1eW1VZJkL9Yb2N3cY7u6x5X8r5YrCkK6', 'Phone7', 'TEACHER', current_timestamp);
+
+insert into students (user_id, enrollment_date) values
+(2, current_timestamp - interval '5 days'),
+(3, current_timestamp - interval '7 days'),
+(4, current_timestamp - interval '3 days');
+
+insert into teachers (user_id, hire_date, specialization) values
+(5, current_timestamp - interval '5 days', 'Specialization 5'),
+(6, current_timestamp - interval '7 days', 'Specialization 6'),
+(7, current_timestamp - interval '3 days', 'Specialization 7');
+
+insert into courses (id, title, description, teacher_id) values
+(1, 'Course 1', 'Course Description 1', 7),
+(2, 'Course 2', 'Course Description 2', 6),
+(3, 'Course 3', 'Course Description 3', 5);
+
+insert into groups (id, code, name, course_id, start_date, end_date) values
+(1, 'G1', 'Group 1', 1, current_timestamp, current_timestamp + interval '90 days'),
+(2, 'G2', 'Group 2', 1, current_timestamp, current_timestamp + interval '95 days'),
+(3, 'G3', 'Group 3', 2, current_timestamp, current_timestamp + interval '50 days');
+
+insert into group_students (group_id, student_id) values
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 2),
+(2, 3),
+(3, 2);
+
+insert into lessons (id, group_id, teacher_id, title, description, start_date, duration, deadline_date) values
+( 1, 1, 7, 'Lesson 1-1', 'Description 1', current_timestamp, 90, current_timestamp + interval '10 days'),
+( 2, 1, 6, 'Lesson 1-2', 'Description 2', current_timestamp, 90, current_timestamp + interval '10 days'),
+( 3, 1, 5, 'Lesson 1-3', 'Description 3', current_timestamp, 90, current_timestamp + interval '10 days'),
+( 4, 1, 7, 'Lesson 1-4', 'Description 4', current_timestamp, 90, current_timestamp + interval '10 days'),
+( 5, 1, 6, 'Lesson 1-5', 'Description 5', current_timestamp, 90, current_timestamp + interval '10 days'),
+( 6, 1, 5, 'Lesson 1-6', 'Description 6', current_timestamp, 90, current_timestamp + interval '10 days'),
+( 7, 2, 7, 'Lesson 2-1', 'Description 7', current_timestamp, 90, current_timestamp + interval '10 days'),
+( 8, 2, 6, 'Lesson 2-2', 'Description 8', current_timestamp, 90, current_timestamp + interval '10 days'),
+( 9, 2, 5, 'Lesson 2-3', 'Description 9', current_timestamp, 90, current_timestamp + interval '10 days'),
+(10, 3, 7, 'Lesson 3-1', 'Description A', current_timestamp, 90, current_timestamp + interval '10 days'),
+(11, 3, 6, 'Lesson 3-2', 'Description B', current_timestamp, 90, current_timestamp + interval '10 days'),
+(12, 3, 5, 'Lesson 3-3', 'Description C', current_timestamp, 90, current_timestamp + interval '10 days');
+
+insert into homeworks (id, lesson_id, student_id, answer, submit_date, comment, score, status) values
+( 1,  1, 2, 'Answer 2-1', current_timestamp + interval '10 hour', 'Comment 2-1', 1, 'NOT_SUBMITTED'),
+( 2,  2, 2, 'Answer 2-2', current_timestamp + interval '20 hour', 'Comment 2-2', 1, 'SUBMITTED'),
+( 3,  3, 2, 'Answer 2-3', current_timestamp + interval '30 hour', 'Comment 2-3', 1, 'NEED_REVISION'),
+( 4,  4, 2, 'Answer 2-4', current_timestamp + interval '40 hour', 'Comment 2-4', 1, 'ACCEPTED'),
+( 5,  5, 2, 'Answer 2-5', current_timestamp + interval '50 hour', 'Comment 2-5', 1, 'NOT_SUBMITTED'),
+( 6,  6, 2, 'Answer 2-6', current_timestamp + interval '60 hour', 'Comment 2-6', 1, 'SUBMITTED'),
+( 7,  7, 2, 'Answer 2-7', current_timestamp + interval '70 hour', 'Comment 2-7', 1, 'NEED_REVISION'),
+( 8,  8, 2, 'Answer 2-8', current_timestamp + interval '80 hour', 'Comment 2-8', 1, 'ACCEPTED'),
+( 9,  9, 2, 'Answer 2-9', current_timestamp + interval '90 hour', 'Comment 2-9', 1, 'NOT_SUBMITTED'),
+(10, 10, 2, 'Answer 2-10', current_timestamp + interval '10 hour', 'Comment 2-10', 1, 'SUBMITTED'),
+(11, 11, 2, 'Answer 2-11', current_timestamp + interval '20 hour', 'Comment 2-11', 1, 'NEED_REVISION'),
+(12, 12, 2, 'Answer 2-12', current_timestamp + interval '30 hour', 'Comment 2-12', 1, 'ACCEPTED'),
+(13,  1, 3, 'Answer 3-1', current_timestamp + interval '40 hour', 'Comment 3-1', 1, 'NOT_SUBMITTED'),
+(14,  2, 3, 'Answer 3-2', current_timestamp + interval '50 hour', 'Comment 3-2', 1, 'SUBMITTED'),
+(15,  3, 3, 'Answer 3-3', current_timestamp + interval '60 hour', 'Comment 3-3', 1, 'NEED_REVISION'),
+(16,  4, 3, 'Answer 3-4', current_timestamp + interval '70 hour', 'Comment 3-4', 1, 'ACCEPTED'),
+(17,  5, 3, 'Answer 3-5', null, null, null, null),
+(18,  6, 3, 'Answer 3-6', current_timestamp + interval '70 hour', 'Comment 3-6', 1, 'SUBMITTED'),
+(19,  7, 3, 'Answer 3-7', current_timestamp + interval '80 hour', 'Comment 3-7', 1, 'NEED_REVISION'),
+(20,  8, 3, 'Answer 3-8', current_timestamp + interval '90 hour', 'Comment 3-8', 1, 'ACCEPTED'),
+(21,  9, 3, 'Answer 3-9', current_timestamp + interval '10 hour', 'Comment 3-9', 1, 'NOT_SUBMITTED'),
+(22, 10, 3, 'Answer 3-10', current_timestamp + interval '20 hour', 'Comment 3-10', 1, 'SUBMITTED'),
+(23, 11, 3, 'Answer 3-11', current_timestamp + interval '30 hour', 'Comment 3-11', 1, 'NEED_REVISION'),
+(24, 12, 3, 'Answer 3-12', current_timestamp + interval '40 hour', 'Comment 3-12', 1, 'ACCEPTED'),
+(25,  1, 4, 'Answer 4-1', current_timestamp + interval '1 day', 'Comment 4-1', 1, 'NOT_SUBMITTED'),
+(26,  2, 4, 'Answer 4-2', current_timestamp + interval '2 day', 'Comment 4-2', 1, 'SUBMITTED'),
+(27,  3, 4, 'Answer 4-3', current_timestamp + interval '3 day', 'Comment 4-3', 1, 'NEED_REVISION'),
+(28,  4, 4, 'Answer 4-4', current_timestamp + interval '4 day', 'Comment 4-4', 1, 'ACCEPTED'),
+(29,  5, 4, 'Answer 4-5', current_timestamp + interval '5 day', 'Comment 4-5', 1, 'NOT_SUBMITTED'),
+(30,  6, 4, 'Answer 4-6', current_timestamp + interval '6 day', 'Comment 4-6', 1, 'SUBMITTED'),
+(31,  7, 4, 'Answer 4-7', current_timestamp + interval '7 day', 'Comment 4-7', 1, 'NEED_REVISION'),
+(32,  8, 4, 'Answer 4-8', current_timestamp + interval '8 day', 'Comment 4-8', 1, 'ACCEPTED'),
+(33,  9, 4, 'Answer 4-9', current_timestamp + interval '9 day', 'Comment 4-9', 1, 'NOT_SUBMITTED'),
+(34, 10, 4, 'Answer 4-10', current_timestamp + interval '10 day', 'Comment 4-10', 1, 'SUBMITTED'),
+(35, 11, 4, 'Answer 4-11', current_timestamp + interval '11 day', 'Comment 4-11', 1, 'NEED_REVISION'),
+(36, 12, 4, 'Answer 4-12', current_timestamp + interval '12 day', 'Comment 4-12', 1, 'ACCEPTED');
